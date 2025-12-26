@@ -1,0 +1,133 @@
+#usda 1.0
+
+def Xform "World"
+{
+    def Xform "Floor"
+    {
+        def Cube "floor"
+        {
+            double3 xformOp:translate = (0, 0, 0)
+            uniform double3 size = (30, 1, 30)
+        }
+    }
+
+    def Xform "Walls"
+    {
+        def Cube "wall_front"
+        {
+            double3 xformOp:translate = (0, 2.5, 15)
+            uniform double3 size = (30, 5, 1)
+        }
+
+        def Cube "wall_back"
+        {
+            double3 xformOp:translate = (0, 2.5, -15)
+            uniform double3 size = (30, 5, 1)
+        }
+
+        def Cube "wall_left"
+        {
+            double3 xformOp:translate = (-15, 2.5, 0)
+            uniform double3 size = (1, 5, 30)
+        }
+
+        def Cube "wall_right"
+        {
+            double3 xformOp:translate = (15, 2.5, 0)
+            uniform double3 size = (1, 5, 30)
+        }
+    }
+
+    def Xform "Navigation_Markers"
+    {
+        def Cube "start_marker"
+        {
+            double3 xformOp:translate = (0, 0.02, 0)
+            uniform double3 size = (1, 0.01, 1)
+            float3 primvars:displayColor = (0, 1, 0) (
+                interpolation = "constant"
+            )
+        }
+
+        def Cube "goal_marker"
+        {
+            double3 xformOp:translate = (10, 0.02, 10)
+            uniform double3 size = (1, 0.01, 1)
+            float3 primvars:displayColor = (1, 0, 0) (
+                interpolation = "constant"
+            )
+        }
+
+        def Cube "waypoint_1"
+        {
+            double3 xformOp:translate = (5, 0.02, 5)
+            uniform double3 size = (0.5, 0.01, 0.5)
+            float3 primvars:displayColor = (0, 0, 1) (
+                interpolation = "constant"
+            )
+        }
+
+        def Cube "waypoint_2"
+        {
+            double3 xformOp:translate = (8, 0.02, 7)
+            uniform double3 size = (0.5, 0.01, 0.5)
+            float3 primvars:displayColor = (1, 1, 0) (
+                interpolation = "constant"
+            )
+        }
+    }
+
+    def Xform "Obstacles"
+    {
+        def Cube "table_1"
+        {
+            double3 xformOp:translate = (-5, 0.75, 5)
+            uniform double3 size = (2, 1.5, 1)
+        }
+
+        def Sphere "ball_1"
+        {
+            double3 xformOp:translate = (2, 1, -5)
+            float radius = 1.2
+        }
+
+        def Capsule "cylinder_1"
+        {
+            double3 xformOp:translate = (-8, 1.5, -8)
+            float radius = 0.5
+            double height = 3
+        }
+
+        def Cone "cone_1"
+        {
+            double3 xformOp:translate = (7, 1, -10)
+            float radius = 1
+            double height = 2
+        }
+
+        def Cube "box_1"
+        {
+            double3 xformOp:translate = (-3, 0.5, -10)
+            uniform double3 size = (1, 1, 1)
+        }
+    }
+
+    def Xform "Lighting"
+    {
+        def DistantLight "key_light"
+        {
+            float angle = 0.5
+            float intensity = 1200
+            float3 color = (1, 1, 1)
+            double3 xformOp:rotateXYZ = (10, -45, 0)
+        }
+
+        def DistantLight "ambient_light"
+        {
+            float angle = 1.0
+            float intensity = 300
+            float3 color = (0.8, 0.8, 0.8)
+            double3 xformOp:rotateXYZ = (-10, 135, 0)
+        }
+    }
+}

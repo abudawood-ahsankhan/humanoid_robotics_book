@@ -1,0 +1,18 @@
+# Input: object pose, grasp parameters
+geometry_msgs/Pose object_pose
+geometry_msgs/Pose grasp_pose
+float32 grasp_force
+string grasp_type
+
+---
+# Result: grasp success with details
+bool success
+string result_message
+float32 grasp_force_applied
+float32 confidence
+
+---
+# Feedback: grasp progress
+string status
+float32 progress
+string current_step

@@ -1,0 +1,394 @@
+#usda 1.0
+
+def Xform "ComplexNavigationScenario"
+{
+    def Xform "Environment"
+    {
+        def Xform "Floor"
+        {
+            def Cube "main_floor"
+            {
+                double3 xformOp:translate = (0, 0, 0)
+                uniform double3 size = (40, 1, 40)
+
+                # Apply material
+                rel material:binding = </Materials/DefaultFloorMaterial>
+            }
+        }
+
+        def Xform "Walls"
+        {
+            # Outer walls
+            def Cube "north_wall"
+            {
+                double3 xformOp:translate = (0, 2.5, 20)
+                uniform double3 size = (40, 5, 1)
+                rel material:binding = </Materials/DefaultWallMaterial>
+            }
+
+            def Cube "south_wall"
+            {
+                double3 xformOp:translate = (0, 2.5, -20)
+                uniform double3 size = (40, 5, 1)
+                rel material:binding = </Materials/DefaultWallMaterial>
+            }
+
+            def Cube "east_wall"
+            {
+                double3 xformOp:translate = (20, 2.5, 0)
+                uniform double3 size = (1, 5, 40)
+                rel material:binding = </Materials/DefaultWallMaterial>
+            }
+
+            def Cube "west_wall"
+            {
+                double3 xformOp:translate = (-20, 2.5, 0)
+                uniform double3 size = (1, 5, 40)
+                rel material:binding = </Materials/DefaultWallMaterial>
+            }
+
+            # Interior walls creating maze-like structure
+            def Xform "interior_walls"
+            {
+                def Cube "wall_1"
+                {
+                    double3 xformOp:translate = (-10, 1.5, 5)
+                    uniform double3 size = (15, 3, 1)
+                    rel material:binding = </Materials/DefaultWallMaterial>
+                }
+
+                def Cube "wall_2"
+                {
+                    double3 xformOp:translate = (10, 1.5, -5)
+                    uniform double3 size = (15, 3, 1)
+                    rel material:binding = </Materials/DefaultWallMaterial>
+                }
+
+                def Cube "wall_3"
+                {
+                    double3 xformOp:translate = (0, 1.5, 10)
+                    uniform double3 size = (1, 3, 15)
+                    rel material:binding = </Materials/DefaultWallMaterial>
+                }
+
+                def Cube "wall_4"
+                {
+                    double3 xformOp:translate = (0, 1.5, -10)
+                    uniform double3 size = (1, 3, 15)
+                    rel material:binding = </Materials/DefaultWallMaterial>
+                }
+
+                def Cube "wall_5"
+                {
+                    double3 xformOp:translate = (-15, 1.5, 0)
+                    uniform double3 size = (1, 3, 10)
+                    rel material:binding = </Materials/DefaultWallMaterial>
+                }
+
+                def Cube "wall_6"
+                {
+                    double3 xformOp:translate = (15, 1.5, 0)
+                    uniform double3 size = (1, 3, 10)
+                    rel material:binding = </Materials/DefaultWallMaterial>
+                }
+            }
+        }
+
+        def Xform "Obstacles"
+        {
+            # Static obstacles
+            def Sphere "obstacle_sphere_1"
+            {
+                double3 xformOp:translate = (-5, 0.5, 8)
+                float radius = 0.8
+                rel material:binding = </Materials/RedObstacleMaterial>
+            }
+
+            def Capsule "obstacle_capsule_1"
+            {
+                double3 xformOp:translate = (5, 1.0, -8)
+                float radius = 0.5
+                double height = 2.0
+                rel material:binding = </Materials/BlueObstacleMaterial>
+            }
+
+            def Cone "obstacle_cone_1"
+            {
+                double3 xformOp:translate = (8, 0.5, 5)
+                float radius = 0.6
+                double height = 1.0
+                rel material:binding = </Materials/GreenObstacleMaterial>
+            }
+
+            def Cylinder "obstacle_cylinder_1"
+            {
+                double3 xformOp:translate = (-8, 0.75, -5)
+                float radius = 0.5
+                double height = 1.5
+                rel material:binding = </Materials/YellowObstacleMaterial>
+            }
+
+            def Cube "obstacle_cube_1"
+            {
+                double3 xformOp:translate = (0, 0.5, 15)
+                uniform double3 size = (1.2, 1.0, 1.2)
+                rel material:binding = </Materials/PurpleObstacleMaterial>
+            }
+
+            # Dynamic obstacles (will be animated in simulation)
+            def Xform "dynamic_obstacles"
+            {
+                def Sphere "moving_sphere_1"
+                {
+                    double3 xformOp:translate = (-12, 0.5, 0)
+                    float radius = 0.6
+                    rel material:binding = </Materials/MovingObstacleMaterial>
+
+                    # Animation properties
+                    add apiSchemas = ["AnimatedSphere"]
+                    uniform float3 animation:translationMin = (-15, 0.5, -5)
+                    uniform float3 animation:translationMax = (15, 0.5, 5)
+                    uniform float animation:speed = 0.5
+                }
+
+                def Capsule "moving_capsule_1"
+                {
+                    double3 xformOp:translate = (12, 1.0, 0)
+                    float radius = 0.4
+                    double height = 2.0
+                    rel material:binding = </Materials/MovingObstacleMaterial>
+
+                    # Animation properties
+                    add apiSchemas = ["AnimatedCapsule"]
+                    uniform float3 animation:translationMin = (15, 1.0, -10)
+                    uniform float3 animation:translationMax = (-15, 1.0, 10)
+                    uniform float animation:speed = 0.3
+                }
+            }
+        }
+
+        def Xform "Navigation_Waypoints"
+        {
+            # Waypoints for navigation tasks
+            def Xform "waypoint_1"
+            {
+                double3 xformOp:translate = (-15, 0.02, -15)
+                def Sphere "marker"
+                {
+                    float radius = 0.3
+                    rel material:binding = </Materials/WaypointStartMaterial>
+                }
+            }
+
+            def Xform "waypoint_2"
+            {
+                double3 xformOp:translate = (15, 0.02, 15)
+                def Sphere "marker"
+                {
+                    float radius = 0.3
+                    rel material:binding = </Materials/WaypointEndMaterial>
+                }
+            }
+
+            def Xform "waypoint_3"
+            {
+                double3 xformOp:translate = (0, 0.02, 0)
+                def Sphere "marker"
+                {
+                    float radius = 0.3
+                    rel material:binding = </Materials/WaypointIntermediateMaterial>
+                }
+            }
+        }
+
+        def Xform "Lighting"
+        {
+            def Xform "Key_Light"
+            {
+                def DistantLight "key_light"
+                {
+                    float intensity = 1000
+                    float3 color = (1, 1, 1)
+                    double3 xformOp:rotateXYZ = (45, 30, 0)
+                }
+            }
+
+            def Xform "Fill_Light"
+            {
+                def DistantLight "fill_light"
+                {
+                    float intensity = 300
+                    float3 color = (0.8, 0.8, 1.0)
+                    double3 xformOp:rotateXYZ = (-30, -60, 0)
+                }
+            }
+
+            def Xform "Rim_Light"
+            {
+                def DistantLight "rim_light"
+                {
+                    float intensity = 500
+                    float3 color = (0.8, 0.9, 1.0)
+                    double3 xformOp:rotateXYZ = (180, 45, 0)
+                }
+            }
+        }
+
+        def Xform "Physics"
+        {
+            # Physics scene configuration
+            def PhysicsScene "physics_scene"
+            {
+                float3 gravity = (0, 0, -9.81)
+                bool enableCCD = false
+                int maxDepenetrationVelocity = 1000
+            }
+        }
+    }
+
+    def Xform "Materials"
+    {
+        # Floor material
+        def Material "DefaultFloorMaterial"
+        {
+            def Shader "PreviewSurface"
+            {
+                uniform token type = "UsdPreviewSurface"
+                float3 inputs:diffuseColor = (0.7, 0.7, 0.7)
+                float inputs:metallic = 0.0
+                float inputs:roughness = 0.3
+                float inputs:clearcoat = 0.0
+                float inputs:clearcoatRoughness = 0.01
+            }
+            connect inputs:surface.connect = </Materials/DefaultFloorMaterial/PreviewSurface.outputs:surface>
+        }
+
+        # Wall material
+        def Material "DefaultWallMaterial"
+        {
+            def Shader "PreviewSurface"
+            {
+                uniform token type = "UsdPreviewSurface"
+                float3 inputs:diffuseColor = (0.8, 0.8, 0.8)
+                float inputs:metallic = 0.0
+                float inputs:roughness = 0.4
+                float inputs:clearcoat = 0.0
+                float inputs:clearcoatRoughness = 0.01
+            }
+            connect inputs:surface.connect = </Materials/DefaultWallMaterial/PreviewSurface.outputs:surface>
+        }
+
+        # Obstacle materials
+        def Material "RedObstacleMaterial"
+        {
+            def Shader "PreviewSurface"
+            {
+                uniform token type = "UsdPreviewSurface"
+                float3 inputs:diffuseColor = (0.8, 0.2, 0.2)
+                float inputs:metallic = 0.1
+                float inputs:roughness = 0.6
+            }
+            connect inputs:surface.connect = </Materials/RedObstacleMaterial/PreviewSurface.outputs:surface>
+        }
+
+        def Material "BlueObstacleMaterial"
+        {
+            def Shader "PreviewSurface"
+            {
+                uniform token type = "UsdPreviewSurface"
+                float3 inputs:diffuseColor = (0.2, 0.2, 0.8)
+                float inputs:metallic = 0.1
+                float inputs:roughness = 0.6
+            }
+            connect inputs:surface.connect = </Materials/BlueObstacleMaterial/PreviewSurface.outputs:surface>
+        }
+
+        def Material "GreenObstacleMaterial"
+        {
+            def Shader "PreviewSurface"
+            {
+                uniform token type = "UsdPreviewSurface"
+                float3 inputs:diffuseColor = (0.2, 0.8, 0.2)
+                float inputs:metallic = 0.1
+                float inputs:roughness = 0.6
+            }
+            connect inputs:surface.connect = </Materials/GreenObstacleMaterial/PreviewSurface.outputs:surface>
+        }
+
+        def Material "YellowObstacleMaterial"
+        {
+            def Shader "PreviewSurface"
+            {
+                uniform token type = "UsdPreviewSurface"
+                float3 inputs:diffuseColor = (0.8, 0.8, 0.2)
+                float inputs:metallic = 0.1
+                float inputs:roughness = 0.6
+            }
+            connect inputs:surface.connect = </Materials/YellowObstacleMaterial/PreviewSurface.outputs:surface>
+        }
+
+        def Material "PurpleObstacleMaterial"
+        {
+            def Shader "PreviewSurface"
+            {
+                uniform token type = "UsdPreviewSurface"
+                float3 inputs:diffuseColor = (0.6, 0.2, 0.8)
+                float inputs:metallic = 0.1
+                float inputs:roughness = 0.6
+            }
+            connect inputs:surface.connect = </Materials/PurpleObstacleMaterial/PreviewSurface.outputs:surface>
+        }
+
+        def Material "MovingObstacleMaterial"
+        {
+            def Shader "PreviewSurface"
+            {
+                uniform token type = "UsdPreviewSurface"
+                float3 inputs:diffuseColor = (0.9, 0.6, 0.2)
+                float inputs:metallic = 0.1
+                float inputs:roughness = 0.6
+            }
+            connect inputs:surface.connect = </Materials/MovingObstacleMaterial/PreviewSurface.outputs:surface>
+        }
+
+        # Waypoint materials
+        def Material "WaypointStartMaterial"
+        {
+            def Shader "PreviewSurface"
+            {
+                uniform token type = "UsdPreviewSurface"
+                float3 inputs:diffuseColor = (0.0, 1.0, 0.0)  # Green
+                float inputs:metallic = 0.0
+                float inputs:roughness = 0.5
+                float inputs:emissiveColor = (0.0, 0.5, 0.0)  # Slightly emissive
+            }
+            connect inputs:surface.connect = </Materials/WaypointStartMaterial/PreviewSurface.outputs:surface>
+        }
+
+        def Material "WaypointEndMaterial"
+        {
+            def Shader "PreviewSurface"
+            {
+                uniform token type = "UsdPreviewSurface"
+                float3 inputs:diffuseColor = (1.0, 0.0, 0.0)  # Red
+                float inputs:metallic = 0.0
+                float inputs:roughness = 0.5
+                float inputs:emissiveColor = (0.5, 0.0, 0.0)  # Slightly emissive
+            }
+            connect inputs:surface.connect = </Materials/WaypointEndMaterial/PreviewSurface.outputs:surface>
+        }
+
+        def Material "WaypointIntermediateMaterial"
+        {
+            def Shader "PreviewSurface"
+            {
+                uniform token type = "UsdPreviewSurface"
+                float3 inputs:diffuseColor = (1.0, 1.0, 0.0)  # Yellow
+                float inputs:metallic = 0.0
+                float inputs:roughness = 0.5
+                float inputs:emissiveColor = (0.5, 0.5, 0.0)  # Slightly emissive
+            }
+            connect inputs:surface.connect = </Materials/WaypointIntermediateMaterial/PreviewSurface.outputs:surface>
+        }
+    }
+}

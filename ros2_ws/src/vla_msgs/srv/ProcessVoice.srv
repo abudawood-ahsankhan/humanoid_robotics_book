@@ -1,0 +1,9 @@
+# Input: audio data
+sensor_msgs/AudioData audio_data
+
+---
+# Output: transcribed text with confidence score
+bool success
+string text
+float32 confidence
+string error_message

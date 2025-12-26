@@ -1,0 +1,11 @@
+# Input: command text, context
+string command
+string[] context
+string[] constraints
+
+---
+# Output: action plan with confidence
+bool success
+ActionPlan plan
+string error_message
+float32 confidence

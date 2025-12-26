@@ -1,0 +1,9 @@
+openai-whisper
+sounddevice
+pyaudio
+openai
+transformers
+torch
+opencv-python
+numpy
+pillow

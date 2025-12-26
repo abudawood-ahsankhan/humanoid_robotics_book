@@ -1,0 +1,10 @@
+# Define the goal
+geometry_msgs/Pose target_pose
+---
+# Define the result
+bool success
+string message
+---
+# Define the feedback
+float64 distance_to_goal
+string current_status

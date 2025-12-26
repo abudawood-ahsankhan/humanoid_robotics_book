@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Humanoid Robotics Book - Documentation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .module {
+            margin: 20px 0;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            background-color: #ecf0f1;
+        }
+        .module h3 {
+            margin-top: 0;
+            color: #2c3e50;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        li {
+            margin: 8px 0;
+        }
+        a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .status {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            margin-left: 10px;
+        }
+        .complete {
+            background-color: #2ecc71;
+            color: white;
+        }
+        .partial {
+            background-color: #f39c12;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Humanoid Robotics Book</h1>
+        <p>Welcome to the complete educational curriculum covering humanoid robot development from basic ROS 2 concepts to advanced Vision-Language-Action systems.</p>
+
+        <div class="module">
+            <h3>Module 1: ROS 2 Robotics with Gazebo Simulation <span class="status complete">Complete</span></h3>
+            <p>Foundation in ROS 2 concepts, action-based control systems, joint control, gesture recognition, and simulation.</p>
+            <ul>
+                <li><a href="website/docs/modules/module-1/index.md">Module 1 Documentation</a></li>
+            </ul>
+        </div>
+
+        <div class="module">
+            <h3>Module 2: Isaac AI Brain for Humanoid Robots <span class="status complete">Complete</span></h3>
+            <p>Advanced perception using NVIDIA Isaac Sim, hardware-accelerated perception, Visual SLAM, and sim-to-real transfer.</p>
+            <ul>
+                <li><a href="website/docs/modules/module-2/index.md">Module 2 Documentation</a></li>
+            </ul>
+        </div>
+
+        <div class="module">
+            <h3>Module 3: Isaac Navigation for Humanoid Robots <span class="status complete">Complete</span></h3>
+            <p>Nav2 framework configuration, path planning, obstacle avoidance, bipedal locomotion, and environmental integration.</p>
+            <ul>
+                <li><a href="website/docs/modules/module-3/index.md">Module 3 Documentation</a></li>
+            </ul>
+        </div>
+
+        <div class="module">
+            <h3>Module 4: Vision-Language-Action (VLA) System <span class="status complete">Complete</span></h3>
+            <p>Voice command processing with OpenAI Whisper, LLM-based cognitive planning, vision grounding, and multi-modal AI integration.</p>
+            <ul>
+                <li><a href="website/docs/modules/module-4/index.md">Module 4 Documentation</a></li>
+            </ul>
+        </div>
+
+        <div class="module">
+            <h3>Fundamental Concepts</h3>
+            <ul>
+                <li><a href="website/docs/intro.md">Introduction & Curriculum Overview</a></li>
+                <li><a href="website/docs/ros2-fundamentals.md">ROS 2 Fundamentals</a></li>
+                <li><a href="website/docs/python-integration.md">Python Integration with ROS 2</a></li>
+                <li><a href="website/docs/robot-modeling.md">Robot Modeling with URDF</a></li>
+                <li><a href="website/docs/development-workflow.md">Development Workflow</a></li>
+                <li><a href="website/docs/spec-driven-development.md">Spec-Driven Development</a></li>
+                <li><a href="website/docs/conclusion.md">Conclusion</a></li>
+            </ul>
+        </div>
+
+        <div class="module">
+            <h3>Implementation Resources</h3>
+            <ul>
+                <li><a href="specs/001-ros2-robotics/spec.md">Module 1: Specification</a></li>
+                <li><a href="specs/001-ros2-robotics/plan.md">Module 1: Implementation Plan</a></li>
+                <li><a href="specs/001-ros2-robotics/tasks.md">Module 1: Tasks</a></li>
+                <li><a href="specs/002-isaac-ai-brain/spec.md">Module 2: Specification</a></li>
+                <li><a href="specs/002-isaac-ai-brain/plan.md">Module 2: Implementation Plan</a></li>
+                <li><a href="specs/002-isaac-ai-brain/tasks.md">Module 2: Tasks</a></li>
+                <li><a href="specs/003-isaac-navigation/spec.md">Module 3: Specification</a></li>
+                <li><a href="specs/003-isaac-navigation/plan.md">Module 3: Implementation Plan</a></li>
+                <li><a href="specs/003-isaac-navigation/tasks.md">Module 3: Tasks</a></li>
+                <li><a href="specs/004-vla-integration/spec.md">Module 4: Specification</a></li>
+                <li><a href="specs/004-vla-integration/plan.md">Module 4: Implementation Plan</a></li>
+                <li><a href="specs/004-vla-integration/tasks.md">Module 4: Tasks</a></li>
+            </ul>
+        </div>
+
+        <div class="module">
+            <h3>About This Curriculum</h3>
+            <p>This comprehensive curriculum covers the full stack of humanoid robot development:</p>
+            <ul>
+                <li><strong>Foundation</strong>: ROS 2 concepts, node development, and simulation</li>
+                <li><strong>Perception</strong>: Advanced computer vision and sensor integration</li>
+                <li><strong>Cognition</strong>: AI planning and decision making with LLMs</li>
+                <li><strong>Action</strong>: Control systems and physical execution</li>
+                <li><strong>Integration</strong>: Complete Vision-Language-Action systems</li>
+            </ul>
+            <p>All modules follow a spec-driven development approach ensuring clear requirements and systematic implementation.</p>
+        </div>
+    </div>
+</body>
+</html>

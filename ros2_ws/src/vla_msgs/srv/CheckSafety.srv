@@ -1,0 +1,9 @@
+# Input: proposed action
+Action proposed_action
+
+---
+# Output: safety assessment
+bool safe
+string[] violations
+string error_message
+float32 confidence

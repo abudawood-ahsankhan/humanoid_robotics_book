@@ -1,0 +1,6 @@
+string request_id
+ActionPlan plan
+bool success
+string error_message
+float32 confidence
+builtin_interfaces/Time timestamp

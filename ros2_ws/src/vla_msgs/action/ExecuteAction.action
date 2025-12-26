@@ -1,0 +1,15 @@
+# Input: action type, parameters
+string action_type
+KeyValue[] parameters
+
+---
+# Result: success/failure with details
+bool success
+string result_message
+float32 execution_time
+
+---
+# Feedback: execution progress
+string status
+float32 progress
+string current_step

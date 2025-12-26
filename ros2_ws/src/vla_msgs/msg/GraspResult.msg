@@ -1,0 +1,5 @@
+string request_id
+bool success
+string status
+builtin_interfaces/Time timestamp
+float32 grasp_force_applied

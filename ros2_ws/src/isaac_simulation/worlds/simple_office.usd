@@ -1,0 +1,66 @@
+#usda 1.0
+
+def Xform "World"
+{
+    def Xform "Floor"
+    {
+        def Cube "floor"
+        {
+            double3 xformOp:translate = (0, 0, 0)
+            uniform double3 size = (20, 1, 20)
+        }
+    }
+
+    def Xform "Walls"
+    {
+        def Cube "wall_front"
+        {
+            double3 xformOp:translate = (0, 2.5, 10)
+            uniform double3 size = (20, 5, 1)
+        }
+
+        def Cube "wall_back"
+        {
+            double3 xformOp:translate = (0, 2.5, -10)
+            uniform double3 size = (20, 5, 1)
+        }
+
+        def Cube "wall_left"
+        {
+            double3 xformOp:translate = (-10, 2.5, 0)
+            uniform double3 size = (1, 5, 20)
+        }
+
+        def Cube "wall_right"
+        {
+            double3 xformOp:translate = (10, 2.5, 0)
+            uniform double3 size = (1, 5, 20)
+        }
+    }
+
+    def Xform "Furniture"
+    {
+        def Cube "table"
+        {
+            double3 xformOp:translate = (5, 0.75, 5)
+            uniform double3 size = (2, 1.5, 1)
+        }
+
+        def Cube "chair"
+        {
+            double3 xformOp:translate = (6, 0.5, 6)
+            uniform double3 size = (0.5, 1, 0.5)
+        }
+    }
+
+    def Xform "Lighting"
+    {
+        def DistantLight "key_light"
+        {
+            float angle = 0.5
+            float intensity = 1000
+            float3 color = (1, 1, 1)
+            double3 xformOp:rotateXYZ = (10, -45, 0)
+        }
+    }
+}

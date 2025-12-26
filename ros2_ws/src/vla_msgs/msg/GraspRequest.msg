@@ -1,0 +1,6 @@
+string request_id
+Object target_object
+geometry_msgs/Pose grasp_pose
+builtin_interfaces/Time timestamp
+float32 grasp_force
+string grasp_type

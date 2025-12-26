@@ -1,0 +1,11 @@
+# Input: object types to detect
+string[] object_types
+string camera_frame
+float32 confidence_threshold
+
+---
+# Output: list of detected objects with poses
+bool success
+Object[] objects
+string error_message
+float32 processing_time

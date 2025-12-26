@@ -1,0 +1,81 @@
+# ROS 2 / Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+pip-log.txt
+pip-delete-this-directory.txt
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.log
+*.tmp
+*.bak
+*.swp
+*~
+
+# Build and install directories
+build/
+install/
+log/
+devel/
+
+# ROS specific
+*.xml
+*.yaml
+*.yml
+*.json
+*.db3
+*.db
+*.db-shm
+*.db-wal
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+.DS_Store?
+ehthumbs.db
+Icon?
+desktop.ini
+
+# Virtual environments
+.venv
+venv/
+env/
+
+# Compiled source
+*.so
+*.pyc
+*.pyo
+*.pyd
+
+# Packages
+*.tar.gz
+*.zip
+*.deb
+
+# Environment variable files
+.env
+.env.local
+.env.dev
+.env.prod
+
+# ROS 2 specific
+build_*/
+install_*/
+log_*/

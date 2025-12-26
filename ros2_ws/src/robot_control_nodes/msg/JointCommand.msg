@@ -1,0 +1,4 @@
+string joint_name
+float64 target_position
+float64 target_velocity
+float64 effort
