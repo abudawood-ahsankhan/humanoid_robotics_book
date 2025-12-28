@@ -1,2 +1,0 @@
-This is a placeholder for the robot icon image file.
-In a real implementation, this would be a .png or .svg file.
